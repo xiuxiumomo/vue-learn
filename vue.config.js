@@ -7,10 +7,11 @@ module.exports = {
     devServer: {
         port: 9100,
         proxy: {
-            '/api': {
-                target: 'http://localhost:9100/api/',
+            '/market': {
+                target: ' http://www.creprice.cn',
                 changeOrigin: true
             },
+
         }
     },
     configureWebpack: {
