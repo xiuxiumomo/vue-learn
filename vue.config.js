@@ -22,6 +22,11 @@ module.exports = {
     },
     chainWebpack: (config) => {
         config.resolve.alias.set('@', resolve('src'))
+        config.module
+            .rule('image')
+            .test(/\.ico$/)
+            .use('url-loader')
+            .loader('url-loader')
     }
 
 }

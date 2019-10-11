@@ -28,7 +28,9 @@
         "eslint-plugin-vue": "^5.0.0",
         "less": "^3.0.4",
         "less-loader": "^5.0.0",
+        "normalize.css": "^8.0.1",
         "v-charts": "^1.19.0",
+        "v-viewer": "^1.4.2",
         "vue-template-compiler": "^2.6.10"
     }
 }
