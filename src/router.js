@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Mouse from './views/Mouse.vue'
-
+import Infinite from './views/Infinite.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +27,11 @@ export default new Router({
       path: '/mouse',
       name: 'mouse',
       component: Mouse
+    },
+    {
+      path: '/scroll',
+      name: 'scroll',
+      component: Infinite
     }
   ]
 })
