@@ -8,10 +8,10 @@
 - API: http://www.creprice.cn//market/chartsdatanew.html 
 - 字段解释
 
-从首页挑选城市进入比如: (抚州市) -> 跳转：http://www.creprice.cn/district/CR.html?city=fuzhou 固定字段：
+从首页挑选城市进入比如: (杭州市) -> 跳转：http://www.creprice.cn/district/CR.html?city=hz 固定字段：
 ~~~
  const defaultParam = {
-        city: 'fuzhou', //城市 页面头部的query参数 ?city=fuzhou 
+        city: 'hz', //城市 页面头部的query参数 ?city=hz 
         proptype: 11, //默认未知
         sinceyear: 1, // 最近几年？ 1 3均可
         flag: 1, //默认
@@ -46,13 +46,13 @@
 ### 2.2数据可视化
 主要是用Echart图表，展现房价趋势。一共有三种折线图： 供给、关注、价值。解释：供给简单解释就是市场价。关注：购房者愿意出的价钱。价值：该房子的实际价值。（可以看出基本上实际价值与供给价有很大的出路，也就是说这房价根本不合理啊，大兄弟）
 
-![效果图](./src/assets/all.gif)
+![效果图](./src/assets/hz.gif)
 
 
-![效果图](./src/assets/price.gif)
+![效果图](./src/assets/fz.gif)
 
 
-![效果图](./src/assets/address.gif)
+
 
 ## 3.如何运行？
 - 1.git clone https://github.com/xiuxiumomo/vue-rearn.git

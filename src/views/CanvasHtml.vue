@@ -1,5 +1,5 @@
 <template>
-	<div>canvas</div>
+	<div id="list-box">canvas</div>
 </template>
 <script>
 export default {
@@ -8,6 +8,11 @@ export default {
 		return {};
 	},
 	mounted() {},
-	methods: {}
+    methods: {}
+    
+
+    
 };
 </script>
+<style lang="less" scoped>
+</style>
