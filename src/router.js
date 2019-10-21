@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import Home from './views/Home.vue'
+import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Mouse from './views/Mouse.vue'
 import Infinite from './views/Infinite.vue'
+import CanvasHtml from './views/CanvasHtml.vue'
 Vue.use(Router)
-
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -13,14 +13,11 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home.vue')
+      component: Home
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: About
     },
     {
@@ -32,6 +29,11 @@ export default new Router({
       path: '/scroll',
       name: 'scroll',
       component: Infinite
+    },
+    {
+      path: '/canvas',
+      name: 'canvas',
+      component: CanvasHtml
     }
   ]
 })

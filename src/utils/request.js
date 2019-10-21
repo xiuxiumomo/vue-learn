@@ -4,11 +4,9 @@ const service = axios.create({
     // baseURL: 'http://www.creprice.cn',
     timeout: 40000 //请求超时时间
 });
-
 // request拦截器1
 service.interceptors.request.use(
     config => {
-       
         if (
             config.method == "post" ||
             config.method == "put" ||
