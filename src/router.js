@@ -5,6 +5,7 @@ import About from './views/About.vue'
 import Mouse from './views/Mouse.vue'
 import Infinite from './views/Infinite.vue'
 import CanvasHtml from './views/CanvasHtml.vue'
+import MyTable from './views/MyTable'
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -34,6 +35,11 @@ export default new Router({
       path: '/canvas',
       name: 'canvas',
       component: CanvasHtml
+    },
+    {
+      path: '/myTable',
+      name: 'myTable',
+      component: MyTable
     }
   ]
 })

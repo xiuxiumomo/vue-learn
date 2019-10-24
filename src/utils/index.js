@@ -1,9 +1,9 @@
-import {Str} from './data'
+
 //content文字转化成数组
 export function filterContent(content = '') {
     let contentArr = [];
     let contentStr = content;
-    if (contentStr.indexOf("\\n") > -1) {
+    if (contentStr.indexOf("\n") > -1) {
       contentStr = contentStr.replace(
         /\n/g,
         "<br/>"

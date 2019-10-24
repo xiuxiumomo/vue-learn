@@ -8,7 +8,7 @@ module.exports = {
         port: 9100,
         proxy: {
             '/market': {
-                target: ' http://www.creprice.cn',
+                target: 'http://www.creprice.cn',
                 changeOrigin: true
             },
 
