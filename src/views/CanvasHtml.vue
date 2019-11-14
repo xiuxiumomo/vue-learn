@@ -1,9 +1,10 @@
 <template>
 	<div id="list-box">
+		<a-button type="primary" @click="clipData($event)">复制</a-button>
 		<div id="box"></div>
 		<div id="img-box">
-			<div v-for="(item, index) in pageArray" :key="index" class="list">
-				<div v-for="(jitem,_index) in item" :key="_index" class="list-item">{{jitem}}</div>
+			<div v-for="(item, index) in contentArray" :key="index" class="list-item">
+				<div>{{item}}</div>
 			</div>
 		</div>
 	</div>
@@ -11,6 +12,7 @@
 <script>
 import Str from "@/utils/data";
 import html2canvas from "html2canvas";
+import clip from '@/utils/clip';
 export default {
 	name: "CanvasHtml",
 	data() {
@@ -30,101 +32,48 @@ export default {
 		getListData() {
 			let arrayData = Str.split("↵");
 			this.contentArray = arrayData;
-			const num = 24;
-			//const line = 14;
-			let pageArray = [];
-			let calcData = [];
-			arrayData.forEach(item => {
-				// 计算一段文字需要几行
-				let line = 0;
-				if (item.length <= num - 2) {
-					line = 1;
-				} else {
-					let s = item.length - (num - 2);
-					line = Math.ceil(s / num) + 1;
-				}
-				for (let i = 0; i < line; i++) {
-					let lineData = "";
-					if (i == 0) {
-						lineData = item.slice(0, num - 2);
-					} else {
-						let w_num = item.slice(i * num - 2, num * i + num - 2);
-						lineData = w_num;
-					}
-					calcData.push(lineData);
-				}
-			});
-			let _index = 0;
-			for (let k = 0; k < calcData.length; k++) {
-				let item = calcData.slice(_index, _index + 14);
-				if (item.length > 0) {
-					pageArray.push(item);
-				}
-				_index = _index + 14;
-			}
-			this.pageArray = pageArray;
-
-			// this.initCanvas();
+		
 		},
 		myHtml() {
-			let doms = document.querySelectorAll("list");
-			for (let i = 0; i < doms.length; i++) {
-				html2canvas(doms[i], { height: 600 }).then(canvas => {
-					let image = this.htmlToCanvas(canvas);
-					document.getElementById("box").append(image);
-				});
-			}
+			let doms = document.getElementById("img-box");
+			html2canvas(doms, {}).then(canvas => {
+				let image = this.htmlToCanvas(canvas);
+				document.getElementById("box").append(image);
+			});
 		},
-		initCanvas() {
-			let { pageArray } = this;
-			for (let i = 0; i < pageArray.length; i++) {
-				this.getCanvas(pageArray[i]);
-			}
-		},
-		getCanvas(arr = []) {
-			if (arr.length == 0) {
-				return;
-			}
-			let canvas = document.createElement("canvas");
-			canvas.width = 750;
-			canvas.height = 600;
-			let context = canvas.getContext("2d");
-			//let fontSize = 30;
-			let cWidth = 750;
-			context.font = "bold 30px Arial";
-			context.textAlign = "left";
-			context.textBaseline = "top";
-			context.fillStyle = "#333";
-			for (let i = 0; i < arr.length; i++) {
-				let item = arr[i];
-				for (let j = 0; j < item.length; j++) {
-					//如果是第一行
-					if (item.length < 22) {
-						context.fillText(item[j], j * 30 + 60, 40 * i, cWidth);
-					} else {
-						context.fillText(item[j], j * 30, 40 * i, cWidth);
-					}
-				}
-			}
-			let img = this.htmlToCanvas(canvas);
-			let el = document.getElementById("img-box");
-			el.append(img);
-		},
+	
+		
 		htmlToCanvas(el) {
 			var image = new Image();
-			image.src = el.toDataURL("image/png");
-			image.style.display = "block";
+			image.src = el.toDataURL("image/png",0.1);
+			image.style.display = "inline-block";
 			return image;
+		},
+		clipData(ev) {
+			let targe = document.getElementById("box");
+            clip.handleClipTargetboard(targe, event);
 		}
 	}
 };
 </script>
 <style lang="less" scoped>
-.list {
+#list-box{
+	position: relative;
+}
+#box{
+	position: absolute;
+	top: -1000000%;
+	left: -10000%;
+	opacity: 0;
+
+}
+#img-box {
 	width: 750px;
+	margin: 100px auto;
 	.list-item {
-		font-size: 30px;
-		line-height: 2em;
+		font-size: 20px;
+		line-height: 40px;
+		text-indent: 2em;
 	}
 }
 </style>
