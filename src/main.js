@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import 'lib-flexible/flexible'
+import store from './store/index'
 import 'normalize.css'
 import 'vant/lib/index.css';
 import Vant from 'vant';
@@ -10,5 +10,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

@@ -2,28 +2,30 @@ import axios from "axios";
 import { Toast } from "vant";
 import qs from "qs";
 const service = axios.create({
-    baseURL: '',
+    // baseURL: '',
     timeout: 15000 // 请求超时时间
 });
 
 // request拦截器
 service.interceptors.request.use(
     config => {
+        //post去除
         if (config.method == "post" || config.method == "put") {
              //去除空的字段
             if (config.data) {
                 let data = JSON.parse(JSON.stringify(config.data));
                 for (let k in data) {
-                    if (data[k] === "") {
+                    if (data[k] === "" || data[k]===undefined || data[k]===null) {
                         delete config.data[k];
                     }
                 }
                 config.data = qs.stringify(config.data);
             }
         } else {
+            //get去除
             let params = JSON.parse(JSON.stringify(config.params));
             for (let k in params) {
-                if (params[k] === "") {
+                if (data[k] === "" || data[k]===undefined || data[k]===null) {
                     delete config.params[k];
                 }
             }
