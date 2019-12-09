@@ -4,7 +4,7 @@
           
         </div> -->
         goods
-        
+
         <list-loading ></list-loading>
         <list-loading :type="1"></list-loading>
       
@@ -27,7 +27,9 @@ export default {
             list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         };
     },
-    mounted() {},
+    mounted() {
+        console.log(process.env)
+    },
 
     methods: {}
 };
