@@ -51,15 +51,7 @@
             "parser": "babel-eslint"
         }
     },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {},
-            "postcss-px-to-viewport": {
-                "viewportWidth": 750,
-                "minPixelValue": 1
-            }
-        }
-    },
+
     "browserslist": [
         "> 1%",
         "last 2 versions"
