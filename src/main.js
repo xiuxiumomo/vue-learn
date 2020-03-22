@@ -2,19 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-require('normalize.css')
-//require('@/mock')
-import 'viewerjs/dist/viewer.css'
-import Viewer from 'v-viewer'
-import echarts from 'echarts'
-
-Vue.prototype.$echarts = echarts
-Vue.use(Antd)
-Vue.use(Viewer)
+import '@/icons'
+import '@/assets/less/index.less'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+import { publicFn } from './mixins/publicFn'
 Vue.config.productionTip = false
-
+Vue.use(ElementUI)
+Vue.mixin(publicFn)
 new Vue({
   router,
   store,

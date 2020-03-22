@@ -1,32 +1,25 @@
-const path = require('path');
 
+const path = require('path');
 function resolve(dir) {
-    return path.join(__dirname, dir);
+    return path.resolve(__dirname, dir)
 }
 module.exports = {
     devServer: {
-        port: 9100,
-        proxy: {
-            '/market': {
-                target: 'http://www.creprice.cn',
-                changeOrigin: true
-            },
-
-        }
+        port: 9900
     },
-    configureWebpack: {
-        externals: {
-            'vue': 'Vue',
-            'vue-router': 'VueRouter'
-        }
-    },
-    chainWebpack: (config) => {
-        config.resolve.alias.set('@', resolve('src'))
+    chainWebpack: config => {
+        config.module.rules.delete("svg");
         config.module
-            .rule('image')
-            .test(/\.ico$/)
-            .use('url-loader')
-            .loader('url-loader')
-    }
+            .rule('svg-sprite-loader')
+            .test(/\.svg$/)
+            .include
+            .add(resolve('src/icons'))
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: 'icon-[name]'
+            })
+    },
 
 }
