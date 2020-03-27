@@ -25,7 +25,7 @@ export default {
     SideBar
   },
   mounted() {
-    console.log(this.appSidebar.open)
+    
   },
   data() {
     return {};

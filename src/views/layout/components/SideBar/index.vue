@@ -34,8 +34,14 @@ export default {
       return !this.appSidebar.open;
     }
   },
+  watch: {
+    '$route': function(data) {
+      console.log(data.path)
+    }
+  },
+  
   mounted() {
-    console.log(this.$route)
+    console.log(this.$route.path)
   },
   data() {
     return {

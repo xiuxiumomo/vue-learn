@@ -1,6 +1,6 @@
 <template>
   <div class="bar-item">
-    <el-submenu v-for="item in routes" :index="item.path" :key="item.name">
+    <el-submenu v-for="item in routes" :index="item.path?item.path:'Dashbord'" :key="item.name">
       <template slot="title">
         <svg-icon :icon-class="item.meta.icon"></svg-icon>
         {{item.meta.title}}
@@ -24,6 +24,9 @@ export default {
   },
   data() {
     return {};
+  },
+  mounted() {
+    console.log(this.routes)
   },
   methods: {
     goRouter(item) {

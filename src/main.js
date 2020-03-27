@@ -10,6 +10,8 @@ import { publicFn } from './mixins/publicFn'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.mixin(publicFn)
+
+
 new Vue({
   router,
   store,

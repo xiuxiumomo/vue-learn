@@ -4,6 +4,10 @@ import Layout from "@/views/layout/Layout";
 import user from './user';
 import news from './news';
 Vue.use(VueRouter)
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 export const routes = [
   {
     path: '',

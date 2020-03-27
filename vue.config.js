@@ -5,7 +5,7 @@ function resolve(dir) {
 }
 module.exports = {
     devServer: {
-        port: 9900
+        port: 9100
     },
     chainWebpack: config => {
         config.module.rules.delete("svg");
