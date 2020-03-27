@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper" :class="appSidebar.open?'':'hideSidebar'">
+  <div class="app-wrapper" :class="appSidebar.open ? '' : 'hideSidebar'">
     <side-bar></side-bar>
     <div class="main-container">
       <nav-bar></nav-bar>
@@ -24,10 +24,12 @@ export default {
     NavBar,
     SideBar
   },
+  mounted() {
+    console.log(this.appSidebar.open)
+  },
   data() {
     return {};
   }
 };
 </script>
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted() {
-    
+    console.log(this.$route)
   },
   data() {
     return {

@@ -5,9 +5,8 @@ import user from './user';
 import news from './news';
 Vue.use(VueRouter)
 export const routes = [
- 
   {
-    path: '/',
+    path: '',
     name: 'Dashbord',
     component: Layout,
     redirect: '/dashbord',

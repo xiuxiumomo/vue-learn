@@ -8,7 +8,7 @@ const app = {
     mutations: {
         ToggleSideBar: (state) => {
             
-            state.sidebar.open ? setSideBar(0) : setSideBar(1);
+            state.sidebar.open ? setSideBar(1) : setSideBar(0);
             state.sidebar.open = !state.sidebar.open;
             
         }

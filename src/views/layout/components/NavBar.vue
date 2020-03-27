@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     toggleClick() {
-      console.log(1);
       this.$store.dispatch("ToggleSideBar");
     }
   }
