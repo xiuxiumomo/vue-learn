@@ -3,7 +3,16 @@
 </template>
 <script>
 export default {
-    name: 'news'
+    name: 'news',
+    mounted() {
+        this.getListData()
+    },
+    methods: {
+        async getListData() {
+            let res = await this.$store.dispatch('newsGetList',{});
+            console.log(res);
+        }
+    }
 }
 </script>
 <style lang="less" scoped>
