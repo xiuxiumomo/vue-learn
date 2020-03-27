@@ -19,4 +19,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-src/utils/index.js
+./src/utils/index.js
