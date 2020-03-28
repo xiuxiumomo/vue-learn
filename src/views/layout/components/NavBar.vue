@@ -1,7 +1,29 @@
 <template>
   <div class="navbar">
-    <Hamburger class="hamburger-container" :isActive="appSidebar.open" :toggleClick="toggleClick"></Hamburger>
+    <Hamburger
+      class="hamburger-container"
+      :isActive="appSidebar.open"
+      :toggleClick="toggleClick"
+    ></Hamburger>
     <Breadcrumb></Breadcrumb>
+    <div style="display: inline-block">
+      <el-dropdown class="avatar-container" trigger="click">
+        <div class="avatar-wrapper">
+          <img class="user-avatar" :src="avatar + '?imageView2/1/w/80/h/80'" />
+          <i class="el-icon-caret-bottom"></i>
+        </div>
+        <el-dropdown-menu class="user-dropdown" slot="dropdown">
+          <router-link class="inlineBlock" to="/">
+            <el-dropdown-item>
+              首页
+            </el-dropdown-item>
+          </router-link>
+          <el-dropdown-item divided>
+            <span @click="logout" style="display:block;">退出登录</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 <script>
@@ -21,12 +43,16 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      avatar: '',
     };
   },
   methods: {
     toggleClick() {
       this.$store.dispatch("ToggleSideBar");
+    },
+    logout() {
+      console.log('登出')
     }
   }
 };

@@ -11,8 +11,6 @@ import './permission'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.mixin(publicFn)
-
-
 new Vue({
   router,
   store,
