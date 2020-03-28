@@ -8,13 +8,10 @@
       ref="loginForm"
       label-position="left"
     >
-      <h3 class="title">
-        
-        vue-admin-tool
-      </h3>
+      <h3 class="title">vue-admin-tool</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user"/>
+          <svg-icon icon-class="user" />
         </span>
         <el-input
           name="username"
@@ -37,7 +34,7 @@
           placeholder="请填写密码"
         ></el-input>
         <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye"/>
+          <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
       <el-form-item prop="captcha">
@@ -49,7 +46,6 @@
             v-model="loginForm.captcha"
             placeholder="请填写验证码"
           ></el-input>
-       
         </div>
       </el-form-item>
       <el-form-item>
@@ -60,7 +56,6 @@
           @click.native.prevent="handleLogin"
         >登录</el-button>
       </el-form-item>
-    
     </el-form>
   </div>
 </template>
@@ -118,8 +113,8 @@ export default {
     },
     handleLogin() {
       this.commonRouterChange({
-        name: 'Dashbord'
-      })
+        name: "Dashbord"
+      });
       // this.$refs.loginForm.validate(valid => {
       //   if (valid) {
       //     this.loading = true;
@@ -152,15 +147,15 @@ export default {
 @light_gray: #eee;
 /* reset element-ui css */
 .login-container {
-    .title{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img{
-            width: 50px;
-            margin-right: 20px;
-        }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 50px;
+      margin-right: 20px;
     }
+  }
   .el-input {
     display: inline-block;
     height: 47px;
