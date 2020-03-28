@@ -1,5 +1,5 @@
 <template>
-    <div class="news">新闻
+    <div class="news inner-container">新闻
 
        
     </div>
@@ -19,7 +19,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.news{
-    padding: 20px;
-}
+
 </style>

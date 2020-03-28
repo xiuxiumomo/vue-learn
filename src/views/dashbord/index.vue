@@ -1,3 +1,3 @@
 <template>
-    <div class="dashbord">首页</div>
+    <div class="inner-container">首页</div>
 </template>

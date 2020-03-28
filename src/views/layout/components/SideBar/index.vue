@@ -35,13 +35,11 @@ export default {
     }
   },
   watch: {
-    '$route': function(data) {
-      console.log(data.path)
-    }
+    
   },
   
   mounted() {
-    console.log(this.$route.path)
+    
   },
   data() {
     return {

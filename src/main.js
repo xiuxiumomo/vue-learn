@@ -4,14 +4,14 @@ import router from './router'
 import store from './store'
 import '@/icons'
 import '@/assets/less/index.less'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
 import { publicFn } from './mixins/publicFn'
 import pagenation from '@/global/pagenation/index'
 import './permission'
 Vue.config.productionTip = false
-Vue.use(ElementUI)
+const ElementUI = window.ELEMENT;
+Vue.use(ElementUI, { size: 'mini' })
 Vue.use(pagenation)
+
 Vue.mixin(publicFn)
 new Vue({
   router,

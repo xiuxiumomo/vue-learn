@@ -10,6 +10,17 @@ VueRouter.prototype.push = function push(location) {
 }
 export const routes = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
+  {
     path: '',
     name: 'Dashbord',
     component: Layout,
@@ -46,7 +57,7 @@ export const routes = [
     path: "*",
     name: '404',
     hidden: true,
-    component: ()=>import("@/views/404.vue")
+    component: () => import("@/views/404.vue")
   }
 
 ]

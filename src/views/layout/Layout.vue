@@ -3,6 +3,7 @@
     <side-bar></side-bar>
     <div class="main-container">
       <nav-bar></nav-bar>
+      <tags-view/>
       <app-main></app-main>
     </div>
   </div>
@@ -11,6 +12,7 @@
 import AppMain from "./components/AppMain";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+import TagsView from './components/TagsView'
 import { mapGetters } from "vuex";
 export default {
   name: "lay-out",
@@ -22,7 +24,8 @@ export default {
   components: {
     AppMain,
     NavBar,
-    SideBar
+    SideBar,
+    TagsView
   },
   mounted() {
     

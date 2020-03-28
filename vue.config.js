@@ -14,6 +14,15 @@ module.exports = {
             }
         }
     },
+    configureWebpack: {
+        externals: {
+            'vue': 'Vue',
+            'vuex': 'Vuex',
+            'vue-router': 'VueRouter',
+            'element-ui': 'ELEMENT',
+            'axios': 'axios'
+        }
+    },
     chainWebpack: config => {
         config.module.rules.delete("svg");
         config.module
@@ -27,6 +36,7 @@ module.exports = {
             .options({
                 symbolId: 'icon-[name]'
             })
-    },
+    }
+   
 
 }

@@ -36,7 +36,7 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.routes);
+    
   },
   methods: {
     goRouter(item) {
