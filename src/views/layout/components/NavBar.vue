@@ -6,10 +6,10 @@
       :toggleClick="toggleClick"
     ></Hamburger>
     <Breadcrumb></Breadcrumb>
-    <div style="display: inline-block">
+    <div style="display: inline-block;height: 50px;">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar + '?imageView2/1/w/80/h/80'" />
+          <img class="user-avatar" src="https://s2.ax1x.com/2019/08/22/m0g5t0.jpg" />
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu class="user-dropdown" slot="dropdown">
@@ -52,7 +52,10 @@ export default {
       this.$store.dispatch("ToggleSideBar");
     },
     logout() {
-      console.log('登出')
+      this.commonRouterChange({
+        name: 'Login'
+      })
+      
     }
   }
 };

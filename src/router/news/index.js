@@ -18,6 +18,13 @@ const news = {
             component: () => import("@/views/news/index"),
             meta: { title: "新闻列表", icon: "agent" },
             hidden: false
+        },
+        {
+            path: "detail",
+            name: 'NewDetail',
+            component: ()=> import('@/views/news/detail/index'),
+            meta: {title: '新闻详情'},
+            hidden: true
         }
     ]
 }

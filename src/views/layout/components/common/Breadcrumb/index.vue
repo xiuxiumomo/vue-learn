@@ -33,8 +33,8 @@ export default {
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name);
       const first = matched[0];
-      if (first && first.name !== "dashboard") {
-        matched = [{ path: "/dashboard", meta: { title: "首页" } }].concat(
+      if (first && first.name !== "dashbord") {
+        matched = [{ path: "/dashbord", meta: { title: "首页" } }].concat(
           matched
         );
       }

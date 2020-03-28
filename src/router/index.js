@@ -29,8 +29,26 @@ export const routes = [
       }
     ]
   },
+  {
+    path: '/login',
+    name: 'Login',
+    hidden: true,
+    component: () => import("@/views/login/index"),
+    meta: {
+      title: 'Login',
+      icon: 'home'
+    }
+
+  },
   user,
   news,
+  {
+    path: "*",
+    name: '404',
+    hidden: true,
+    component: ()=>import("@/views/404.vue")
+  }
+
 ]
 
 const router = new VueRouter({
