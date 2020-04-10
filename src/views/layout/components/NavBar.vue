@@ -1,70 +1,66 @@
 <template>
   <div class="navbar">
-    <Hamburger
-      class="hamburger-container"
-      :isActive="appSidebar.open"
-      :toggleClick="toggleClick"
-    ></Hamburger>
-    <Breadcrumb></Breadcrumb>
-    <div style="display: inline-block;height: 50px;">
-      <el-dropdown class="avatar-container" trigger="click">
-        <div class="avatar-wrapper">
-          <img class="user-avatar" src="https://s2.ax1x.com/2019/08/22/m0g5t0.jpg" />
-          <i class="el-icon-caret-bottom"></i>
-        </div>
-        <el-dropdown-menu class="user-dropdown" slot="dropdown">
-          <router-link class="inlineBlock" to="/">
-            <el-dropdown-item>
-              首页
-            </el-dropdown-item>
-          </router-link>
-          <el-dropdown-item divided>
-            <span @click="logout" style="display:block;">退出登录</span>
+    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
+    <breadcrumb />
+   <el-dropdown class="avatar-container" trigger="click">
+      <div class="avatar-wrapper">
+        <img src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/5db5e585b6e5ae9e5fe68891e590a5e4b996960c?imageView2/1/w/80/h/80" class="user-avatar">
+        <i class="el-icon-caret-bottom"/>
+      </div>
+      <el-dropdown-menu slot="dropdown" class="user-dropdown">
+        <router-link class="inlineBlock" to="/">
+          <el-dropdown-item>
+            前往首页
           </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
+        </router-link>
+        <el-dropdown-item divided>
+          <span style="display:block;" @click="logout">退出登录</span>
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+   
   </div>
 </template>
+
 <script>
-import Hamburger from "./common/Hamburger";
-import Breadcrumb from "./common/Breadcrumb";
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb'
+import Hamburger from '@/components/Hamburger'
+import Screenfull from '@/components/Screenfull'
 export default {
-  name: "nav-bar",
-  computed: {
-    ...mapGetters({
-      appSidebar: "appSidebar"
-    })
-  },
   components: {
+    Breadcrumb,
     Hamburger,
-    Breadcrumb
+    Screenfull
   },
-  data() {
-    return {
-      isActive: false,
-      avatar: '',
-    };
+  computed: {
+    ...mapGetters([
+      'sidebar',
+      'avatar',
+      'device'
+    ])
   },
   methods: {
-    toggleClick() {
-      this.$store.dispatch("ToggleSideBar");
+    toggleSideBar() {
+      this.$store.dispatch('ToggleSideBar')
     },
     logout() {
-      this.commonRouterChange({
-        name: 'Login'
+      // this.$store.dispatch('LogOut').then(() => {
+      //   location.reload() // 为了重新实例化vue-router对象 避免bug
+      // })
+      this.$store.dispatch('FedLogOut').then(()=>{
+        location.reload()
       })
-      
     }
   }
-};
+}
 </script>
-<style lang="less" scoped>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
   height: 50px;
   line-height: 50px;
-  border-radius: 0px !important;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 0 3px 0 rgba(0,0,0,.04);
   .hamburger-container {
     line-height: 58px;
     height: 50px;
@@ -84,8 +80,9 @@ export default {
     right: 35px;
     .avatar-wrapper {
       cursor: pointer;
-      // margin-top: 5px;
+      margin-top: 5px;
       position: relative;
+      line-height: initial;
       .user-avatar {
         width: 40px;
         height: 40px;
@@ -101,3 +98,4 @@ export default {
   }
 }
 </style>
+

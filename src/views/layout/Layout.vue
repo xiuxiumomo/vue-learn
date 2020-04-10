@@ -1,38 +1,69 @@
 <template>
-  <div class="app-wrapper" :class="appSidebar.open ? '' : 'hideSidebar'">
-    <side-bar></side-bar>
+  <div :class="classObj" class="app-wrapper">
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
+    <sidebar class="sidebar-container"/>
     <div class="main-container">
-      <nav-bar></nav-bar>
-      <tags-view/>
-      <app-main></app-main>
+      <navbar/>
+      <app-main/>
     </div>
   </div>
 </template>
+
 <script>
-import AppMain from "./components/AppMain";
-import NavBar from "./components/NavBar";
-import SideBar from "./components/SideBar";
-import TagsView from './components/TagsView'
-import { mapGetters } from "vuex";
+import { Navbar, Sidebar, AppMain } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
+
 export default {
-  name: "lay-out",
-  computed: {
-    ...mapGetters({
-      appSidebar: "appSidebar"
-    })
-  },
+  name: 'Layout',
   components: {
-    AppMain,
-    NavBar,
-    SideBar,
-    TagsView
+    Navbar,
+    Sidebar,
+    AppMain
   },
-  mounted() {
-    
+  mixins: [ResizeMixin],
+  computed: {
+    sidebar() {
+      return this.$store.state.app.sidebar
+    },
+    device() {
+      return this.$store.state.app.device
+    },
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === 'mobile'
+      }
+    }
   },
-  data() {
-    return {};
+  methods: {
+    handleClickOutside() {
+      this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
+    }
   }
-};
+}
 </script>
-<style lang="less" scoped></style>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  @import "src/styles/mixin.scss";
+  .app-wrapper {
+    @include clearfix;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    &.mobile.openSidebar{
+      position: fixed;
+      top: 0;
+    }
+  }
+  .drawer-bg {
+    background: #000;
+    opacity: 0.3;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+  }
+</style>
