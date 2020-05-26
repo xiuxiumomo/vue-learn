@@ -1,0 +1,162 @@
+#lucky-round {
+    height: 1206px;
+    background-image: url('../../img/lucky/bg.png');
+    position: relative;
+    background-color: #FB726D;
+
+    &.isX {
+        height: 1448px;
+        background-image: url('../../img/lucky/bg_x.png');
+    }
+    .nav-btn {
+        width: 150px;
+        height: 70px;
+        background-image: url(../../img/lucky/btn.png);
+        position: absolute;
+        right: 0;
+        top: 30px;
+    }
+    .notice-box{
+        position: absolute;
+        left: 150px;
+        top: 40px;
+        height: 60px;
+        width: 420px;
+        .swipe-box{
+            width: 100%;
+            height: 100%;
+            .swipe-item{
+                line-height: 60px;
+                font-size: 30px;
+                color: #fff;
+                .gift{
+                    color:#FB726D;
+                }
+            }
+        }
+    }
+
+    .round-out-box {
+        position: absolute;
+        left: 116px;
+        top: 168px;
+        width: 500px;
+        height: 500px;
+
+        .turntable {
+            width: 500px;
+            height: 500px;
+
+            .turntable-name {
+                /*background: pink;*/
+                position: absolute;
+                left: 10px;
+                top: 100px;
+                width: calc(100% - 20px);
+                font-size: 26px;
+                text-align: center;
+                color: #fff;
+
+                .turntable-name-span {
+                    width: 65%;
+                    display: inline-block;
+                }
+            }
+
+            .turntable-img {
+                position: absolute;
+                /*要居中就要50% - 宽度 / 2*/
+                left: 50%;
+                top: 40px;
+                transform: translateX(-50%);
+                width: 42px;
+                height: 42px;
+
+                img {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .pointer {
+            position: absolute;
+            left: calc(50% - 68px);
+            top: calc(50% - 81px);
+            width: 136px;
+            height: 162px;
+            background-image: url("../../img/lucky/pointer.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .none-block {
+        height: 690px;
+    }
+
+    .line-item {
+        color: #fff;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .tip-box {
+        margin-top: 133px;
+        padding-left: 46px;
+
+        .tip {
+            color: #F26D68;
+            margin-bottom: 30px;
+
+            .title {
+                font-size: 30px;
+                margin-bottom: 14px;
+            }
+
+            .time-item {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    .res-box {
+        .no-get {
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+            line-height: 80px;
+        }
+
+        .get-ticket {
+            p {
+                text-align: center;
+                line-height: 42px;
+                margin-bottom: 20px;
+
+                &.p1 {
+                    color: #333;
+                    font-size: 30px;
+                    margin-top: 20px;
+                    .num {
+                        color: #FF7474;
+                    }
+                }
+
+                &.p2 {
+                    font-size: 24px;
+                    color: #666;
+
+
+                    .look {
+                        color: #5DBCFE;
+                    }
+                }
+            }
+        }
+    }
+
+}

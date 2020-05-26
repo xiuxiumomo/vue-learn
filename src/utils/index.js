@@ -1,38 +1,28 @@
-
-//content文字转化成数组
-export function filterContent(content = '') {
-    let contentArr = [];
-    let contentStr = content;
-    if (contentStr.indexOf("\n") > -1) {
-      contentStr = contentStr.replace(
-        /\n/g,
-        "<br/>"
-      );
-    } else {
-      contentStr = contentStr.replace(
-        /\s+/g,
-        "<br/>"
-      );
+/**
+ * 获取客户端类型 
+ * 返回值： h5 isAndrios isIOS
+ */
+export function getClient() {
+    let client = '';
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //IOS端
+    if(isAndroid) {
+        client = 'android'
+    }else if(isIOS){
+        client = 'iphone'
+    }else{
+        client = 'h5'
     }
-    if (contentStr.indexOf("<br/>") > -1) {
-      let temp = contentStr.split("<br/>");
-      temp.forEach(item => {
-        item = item.replace(/(^\s*)|(\s*)$/g, "");
-        if (item != '') {
-          contentArr.push(item);
-        }
-      });
-    } else if (contentStr.indexOf("<br>") > -1) {
-      let temp = contentStr.split("<br>");
-      temp.forEach(item => {
-        item = item.replace(/(^\s*)|(\s*)$/g, "");
-        if (item != '') {
-          contentArr.push(item);
-        }
-      });
-    } else {
-      contentArr.push(contentStr);
+    return client;
+   
+}
+/**
+ * 判断是否是iphoneX等高屏幕的
+ */
+export function isIphoneX(){
+    if(screen.height>=668 ) {   
+        return true
     }
-    return contentArr
-  
-  }
+    return false;
+}

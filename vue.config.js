@@ -1,32 +1,24 @@
-const path = require('path');
+let needPath = process.env.VUE_APP_NEEDPATH; //这里配置如果后期需要优化配置路径
 
-function resolve(dir) {
-    return path.join(__dirname, dir);
-}
 module.exports = {
+    publicPath: needPath  ? '/' : '/',
     devServer: {
-        port: 9100,
+        open: true, // 启动服务后是否打开浏览器
+        host: '0.0.0.0',
+        port: 9000, // 服务端口
+        https: false,
+        hotOnly: false,
         proxy: {
-            '/market': {
-                target: 'http://www.creprice.cn',
-                changeOrigin: true
+            "/sites": {
+                target: "http://10.10.10.47:11111",
+                changeOrigin: true,
+                ws: true
+
             },
+        },
+        before: app => {
 
         }
-    },
-    configureWebpack: {
-        externals: {
-            'vue': 'Vue',
-            'vue-router': 'VueRouter'
-        }
-    },
-    chainWebpack: (config) => {
-        config.resolve.alias.set('@', resolve('src'))
-        config.module
-            .rule('image')
-            .test(/\.ico$/)
-            .use('url-loader')
-            .loader('url-loader')
     }
 
 }

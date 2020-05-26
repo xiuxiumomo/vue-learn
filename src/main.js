@@ -1,22 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import 'normalize.css'
+import 'vant/lib/index.css';
+import Vant from 'vant';
+import router from './routes/index' //路由
 import store from './store'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-require('normalize.css')
-//require('@/mock')
-import 'viewerjs/dist/viewer.css'
-import Viewer from 'v-viewer'
-import echarts from 'echarts'
-
-Vue.prototype.$echarts = echarts
-Vue.use(Antd)
-Vue.use(Viewer)
+import './permission' //权限
+import { publicFn } from './mixins/publicFn' //全局混合
+import Bridge from '@/utils/myBridge.js'; //birdge
+Vue.prototype.$bridge = Bridge
+Vue.use(Vant)
+Vue.mixin(publicFn)
 Vue.config.productionTip = false
-
 new Vue({
+  render: h => h(App),
   router,
-  store,
-  render: h => h(App)
+  store
 }).$mount('#app')

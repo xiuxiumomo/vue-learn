@@ -1,39 +1,78 @@
 {
-    "name": "demo",
+    "name": "vue-app",
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "dev": "npm run serve",
         "serve": "vue-cli-service serve",
-        "serve:hk": "vue-cli-service serve --mode hk",
         "build": "vue-cli-service build",
+        "build-more": "vue-cli-service build --mode production_more",
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
         "axios": "^0.19.0",
-        "clipboard": "^2.0.4",
         "core-js": "^2.6.5",
-        "mockjs": "^1.0.1-beta3",
-        "qs": "^6.9.0",
+        "less": "^3.9.0",
+        "less-loader": "^5.0.0",
+        "lib-flexible": "^0.3.2",
+        "postcss-px-to-viewport": "^1.1.1",
+        "postcss-px2rem-exclude": "^0.0.6",
+        "swiper": "^3.4.2",
+        "vant": "^2.1.0",
         "vue": "^2.6.10",
-        "vue-router": "^3.0.3",
-        "vuex": "^3.0.1"
+        "vue-fullpage.js": "^0.1.5",
+        "vue-router": "^3.1.1",
+        "vuex": "^3.1.1"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.11.0",
-        "@vue/cli-plugin-eslint": "^3.11.0",
-        "@vue/cli-service": "^3.11.0",
-        "ant-design-vue": "^1.4.0-beta.0",
+        "@vue/cli-plugin-babel": "^3.9.0",
+        "@vue/cli-plugin-eslint": "^3.9.0",
+        "@vue/cli-service": "^3.9.0",
         "babel-eslint": "^10.0.1",
-        "echarts": "^4.3.0",
+        "better-scroll": "^1.15.2",
+        "clipboard": "^2.0.6",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.0.0",
-        "less": "^3.0.4",
-        "less-loader": "^5.0.0",
+        "js-cookie": "^2.2.1",
         "normalize.css": "^8.0.1",
-        "v-charts": "^1.19.0",
-        "v-viewer": "^1.4.2",
-        "vue-html2canvas": "^0.0.4",
-        "vue-infinite-loading": "^2.4.4",
+        "nprogress": "^0.2.0",
+        "qs": "^6.7.0",
+        "vue-amap": "^0.5.10",
         "vue-template-compiler": "^2.6.10"
-    }
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {
+            "no-console": 0,
+            "no-unused-vars": 0
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {},
+            "postcss-px-to-viewport": {
+                "viewportWidth": 750,
+                "minPixelValue": 1,
+                "selectorBlackList": [
+                    ".ignore",
+                    ".hairlines",
+                    "van"
+                ]
+            }
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
 }
