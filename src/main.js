@@ -12,7 +12,7 @@ const ElementUI = window.ELEMENT;
 Vue.use(ElementUI, { size: 'mini' })
 Vue.use(pagenation)
 console.log('jenkens-test')
-console.log('定时构建自动啊55')
+console.log('定时构建自动啊5546')
 Vue.mixin(publicFn)
 new Vue({
   router,
