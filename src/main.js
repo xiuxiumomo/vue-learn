@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 const ElementUI = window.ELEMENT;
 Vue.use(ElementUI, { size: 'mini' })
 Vue.use(pagenation)
-
+console.log('jenkens-test')
 Vue.mixin(publicFn)
 new Vue({
   router,
